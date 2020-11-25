@@ -1,0 +1,18 @@
+version: "3"
+services:
+  splunk:
+   image: mysplunk
+   container_name: splunk_thehive
+   environment:
+       SPLUNK_START_ARGS: --accept-license
+       SPLUNK_PASSWORD: secretsecret
+       SPLUNK_ENABLE_LISTEN: 9997
+       SPLUNK_ADD: tcp 1514
+   ports:
+     - "0.0.0.0:8000:8000"
+     - "0.0.0.0:9997:9997"
+     - "0.0.0.0:1514:1514"
+#  command: sh -c "sleep 120 && /opt/splunk/bin/splunk add user thehive -password secretthehive -role admin -auth thehive:secretthehive"
+#   command: mkdir -p /opt/splunk/etc/users/thehive/lookup
+#   command: mv /tmp/thehive_instance_list.csv /opt/splunk/etc/users/thehive/lookup/
+   
